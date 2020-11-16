@@ -20,13 +20,13 @@ On veut une méthode de classe `make_unarmed` qui construit un `Weapon` nommé `
 
 Dans notre jeu, un personnage est composé des propriétés suivantes :
 
-`Character.name` : Le nom du personnage <br>
+`Character.name` : Le nom du personnage. On ne peut pas le changer <br>
 `Character.max_hp` : HP maximum <br>
 `Character.attack` : Le niveau d'attaque du personnage <br>
 `Character.defense` : Le niveau de défense du personnage <br>
 `Character.level` : Le niveau d'expérience du personnage <br>
-`Character.weapon` : L'arme utilisée par le personnage <br>
-`Character.hp` : Les HP restants <br>
+`Character.weapon` : L'arme utilisée par le personnage. Si on lui affecte `None`, c'est l'arme vide *Unarmed*. Si l'arme est trop avancée, on lance `ValueError` <br>
+`Character.hp` : Les HP restants (initialisés à `max_hp`). Si on change sa valeur, elle reste entre 0 et `max_hp` <br>
 
 On a une méthode `compute_damage` qui calcule les dégâts infligés à un autre personnage (en paramètre). La formule est la suivante : 
 
