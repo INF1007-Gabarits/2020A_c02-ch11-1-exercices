@@ -6,7 +6,7 @@ import sys
 import unittest
 import inspect
 
-from exercice import *
+from characters import *
 
 
 class TestExercice(unittest.TestCase):
