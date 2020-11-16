@@ -9,4 +9,3 @@ settings/test_associations.json
 settings/variables.txt
 test_exercice.py
 _exercice_version_prof.py
-utils/_fft_version_prof.py
