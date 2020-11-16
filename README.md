@@ -7,7 +7,7 @@
 Nous allons programmer une classe de personnage très simple qui permet d'effectuer des combats tour-à-tour dans un jeu.
 
 ## Armes des personnages
-### `characters.Weapon`
+### `game.Weapon`
 
 On veut une classe qui représente une arme. Une arme possède un nom, un niveau d'attaque et un niveau minimal pour l'utiliser.
 
@@ -16,7 +16,7 @@ Le nom ne peut pas être changé.
 On veut une méthode de classe `make_unarmed` qui construit un `Weapon` nommé `"Unarmed"` avec une puissance de 20.
 
 ## Personnages du jeu
-### `characters.Character`
+### `game.Character`
 
 Dans notre jeu, un personnage est composé des propriétés suivantes :
 
@@ -38,7 +38,7 @@ Où *a* est l'attaquant et *d* est le défendeur. <br>
 
 ## Déroulement d'un combat
 
-### `deal_damage()`
+### `game.deal_damage()`
 
 La fonction prend en paramètre le personnage attaquant et le personnage défendeur (dans cet ordre), calcule et applique le dommage, puis affiche ce qui s'est passé.
 
@@ -59,7 +59,7 @@ Gämmor used Deku Stick
   Äpik took 86 dmg
 ```
 
-### `run_battle()`
+### `game.run_battle()`
 
 La fonction prend en paramètre le personnage attaquant et le personnage défendeur (dans cet ordre) et exécute les attaques entre les personnages, tour-à-tour, jusqu'à ce qu'un des deux meurt (HP à zéro). La fonctio retourne le nombre total de tours effectués.
 
