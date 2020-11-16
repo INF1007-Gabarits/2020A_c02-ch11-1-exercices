@@ -37,5 +37,59 @@ Où *a* est l'attaquant et *d* est le défendeur. <br>
 *random* est un nombre aléatoire entre 85% et 100%
 
 ## Déroulement d'un combat
-### `deal_damage` et `run_combat`_
 
+### `deal_damage()`
+
+La fonction prend en paramètre le personnage attaquant et le personnage défendeur (dans cet ordre), calcule et applique le dommage, puis affiche ce qui s'est passé.
+
+Exemple:
+```python
+c1 = Character("Äpik", 200, 150, 70, 70)
+c2 = Character("Gämmor", 250, 100, 120, 60)
+
+c1.weapon = Weapon("BFG", 100, 69)
+c2.weapon = Weapon("Deku Stick", 120, 1)
+
+deal_damage(c1, c2)
+```
+
+Sortie :
+```
+Gämmor used Deku Stick
+  Äpik took 86 dmg
+```
+
+### `run_battle()`
+
+La fonction prend en paramètre le personnage attaquant et le personnage défendeur (dans cet ordre) et exécute les attaques entre les personnages, tour-à-tour, jusqu'à ce qu'un des deux meurt (HP à zéro). La fonctio retourne le nombre total de tours effectués.
+
+Exemple :
+```python
+c1 = Character("Äpik", 200, 150, 70, 70)
+c2 = Character("Gämmor", 250, 100, 120, 60)
+
+c1.weapon = Weapon("BFG", 100, 69)
+c2.weapon = Weapon("Deku Stick", 120, 1)
+
+turns = run_battle(c1, c2)
+print(f"The battle ended in {turns} turns.")
+```
+
+Sortie :
+```
+Äpik starts a battle with Gämmor!
+Äpik used BFG
+  Gämmor took 70 dmg
+Gämmor used Deku Stick
+  Äpik took 82 dmg
+Äpik used BFG
+  Gämmor took 69 dmg
+Gämmor used Deku Stick
+  Äpik took 91 dmg
+Äpik used BFG
+  Gämmor took 67 dmg
+Gämmor used Deku Stick
+  Äpik took 83 dmg
+Äpik is sleeping with the fishes.
+The battle ended in 6 turns.
+```

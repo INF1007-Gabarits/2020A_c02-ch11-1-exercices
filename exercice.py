@@ -33,19 +33,11 @@ def run_battle(c1, c2):
 
 
 def main():
-	try:
-		os.mkdir("output")
-	except:
-		pass
-
 	c1 = Character("Äpik", 200, 150, 70, 70)
 	c2 = Character("Gämmor", 250, 100, 120, 60)
 
-	bfg = Weapon("BFG", 100, 69)
-	stick = Weapon("OoT Stick", 120, 1)
-
-	c1.weapon = bfg
-	c2.weapon = stick
+	c1.weapon = Weapon("BFG", 100, 69)
+	c2.weapon = Weapon("Deku Stick", 120, 1)
 
 	turns = run_battle(c1, c2)
 	print(f"The battle ended in {turns} turns.")
