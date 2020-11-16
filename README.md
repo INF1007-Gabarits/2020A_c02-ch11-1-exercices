@@ -33,7 +33,7 @@ On a une méthode `compute_damage` qui calcule les dégâts infligés à un autr
 <img src="doc/assets/dmg_eq.png" width="600">
 
 Où *a* est l'attaquant et *d* est le défendeur. <br>
-*crit* est 2 envrion 1/16 (6.25%) du temps, 1 sinon <br>
+*crit* est 2 environ 1/16 (6.25%) du temps, 1 sinon <br>
 *random* est un nombre aléatoire entre 85% et 100%
 
 ## Déroulement d'un combat

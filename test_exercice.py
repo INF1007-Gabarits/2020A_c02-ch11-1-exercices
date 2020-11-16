@@ -4,14 +4,77 @@
 import os
 import sys
 import unittest
+from unittest import mock
 import inspect
+import random
 
 from game import *
 
 
-class TestExercice(unittest.TestCase):
-	def test_its_all_good(self):
-		self.assertTrue(True)
+class TestWeapon(unittest.TestCase):
+	def setUp(self):
+		self.w1 = Weapon("w1", 1, 69)
+		self.w2 = Weapon("w2", 69, 1)
+		self.w3 = Weapon("w3", 69, 42)
+		self.w4 = Weapon.make_unarmed()
+
+	def test_name(self):
+		with self.assertRaises(AttributeError):
+			self.w1.name = "henlo"
+
+	def test_init(self):
+		self.assertEqual(self.w3.name, "w3")
+		self.assertEqual(self.w3.power, 69)
+		self.assertEqual(self.w3.min_level, 42)
+
+	def test_unarmed(self):
+		self.assertEqual(self.w4.name, "Unarmed")
+		self.assertEqual(self.w4.power, Weapon.UNARMED_POWER)
+		self.assertEqual(self.w4.min_level, 1)
+
+
+class TestCharacter(unittest.TestCase):
+	def setUp(self):
+		self.hp_only =  Character("hp_only",  69,  1,  1,  1)
+		self.atk_only = Character("atk_only",  1, 69,  1,  1)
+		self.def_only = Character("def_only",  1,  1, 69,  1)
+		self.lvl_only = Character("lvl_only",  1,  1,  1, 69)
+		self.foo = Character("foo", 11, 12, 13, 14)
+		self.bar = Character("bar", 21, 22, 23, 24)
+		self.wpn1 = Weapon("wpn1", 11, 12)
+		self.bar.weapon = self.wpn1
+
+	def test_name(self):
+		with self.assertRaises(AttributeError):
+			self.foo.name = "henlo"
+
+	def test_weapon(self):
+		self.assertEqual(self.bar.weapon.name, self.wpn1.name)
+		self.bar.weapon = Weapon("wpn2", 1, 2)
+		self.assertEqual(self.bar.weapon.name, "wpn2")
+		self.bar.weapon = None
+		self.assertEqual(self.bar.weapon.name, "Unarmed")
+
+	def test_init(self):
+		self.assertEqual(self.foo.name, "foo")
+		self.assertEqual(self.foo.max_hp, 11)
+		self.assertEqual(self.foo.attack, 12)
+		self.assertEqual(self.foo.defense, 13)
+		self.assertEqual(self.foo.level, 14)
+		self.assertEqual(self.foo.hp, self.foo.max_hp)
+		self.assertEqual(self.foo.weapon.name, "Unarmed")
+
+	@mock.patch("random.random", new=lambda: 0.01)
+	@mock.patch("random.uniform", new=lambda a, b: 0.01)
+	def test_crit(self):
+		dmg, crit = self.foo.compute_damage(self.bar)
+		self.assertTrue(crit)
+
+	@mock.patch("random.random", new=lambda: 0.99)
+	@mock.patch("random.uniform", new=lambda a, b: 0.99)
+	def test_crit(self):
+		dmg, crit = self.foo.compute_damage(self.bar)
+		self.assertFalse(crit)
 
 
 if __name__ == '__main__':

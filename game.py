@@ -19,6 +19,8 @@ class Weapon:
 	:param min_level: Le niveau minimal pour l'utiliser
 	"""
 
+	UNARMED_POWER = 20
+
 	def __init__(self, name, power, min_level):
 		self.__name = name
 		self.power = power
@@ -30,7 +32,7 @@ class Weapon:
 
 	@classmethod
 	def make_unarmed(cls):
-		return cls("Unarmed", 20, 1)
+		return cls("Unarmed", Weapon.UNARMED_POWER, 1)
 
 
 class Character:
