@@ -19,8 +19,6 @@ class Weapon:
 	:param min_level: Le niveau minimal pour l'utiliser
 	"""
 
-	UNARMED_POWER = 20
-
 	def __init__(self, name, power, min_level):
 		self.__name = name
 		self.power = power
@@ -32,7 +30,7 @@ class Weapon:
 
 	@classmethod
 	def make_unarmed(cls):
-		return cls("Unarmed", UNARMED_POWER, 1)
+		return cls("Unarmed", 20, 1)
 
 
 class Character:
@@ -42,26 +40,25 @@ class Character:
 	:param name: Le nom du personnage
 	:param max_hp: HP maximum
 	:param attack: Le niveau d'attaque du personnage
-	:param defence: Le niveau de défense du personnage
+	:param defense: Le niveau de défense du personnage
 	:param level: Le niveau d'expérience du personnage
 	"""
 
-	def __init__(self, name, max_hp, attack, defence, level):
-		self.name = name
+	def __init__(self, name, max_hp, attack, defense, level):
+		self.__name = name
 		self.level = level
 		self.max_hp = max_hp
 		self.attack = attack
-		self.defence = defence
+		self.defense = defense
 		self.weapon = None
 		self.hp = self.max_hp
 
 	@property
 	def name(self):
+		"""
+		Le nom du personnage. Ne peut pas être modifié.
+		"""
 		return self.__name
-
-	@name.setter
-	def name(self, val):
-		self.__name = val
 
 	@property
 	def weapon(self):
@@ -86,7 +83,7 @@ class Character:
 	def compute_damage(self, other):
 		level_factor = (2 * self.level) / 5 + 2
 		weapon_factor = self.weapon.power
-		atk_def_factor = self.attack / other.defence
+		atk_def_factor = self.attack / other.defense
 		critical = random.random() <= 1/16
 		modifier = (2 if critical else 1) * random.uniform(0.85, 1.0)
 		damage = ((level_factor * weapon_factor * atk_def_factor) / 50 + 2) * modifier
