@@ -39,8 +39,8 @@ class TestCharacter(unittest.TestCase):
 		self.atk_only = Character("atk_only",  1, 69,  1,  1)
 		self.def_only = Character("def_only",  1,  1, 69,  1)
 		self.lvl_only = Character("lvl_only",  1,  1,  1, 69)
-		self.foo = Character("foo", 11, 12, 13, 14)
-		self.bar = Character("bar", 21, 22, 23, 24)
+		self.foo = Character("foo", 101, 102, 103, 104)
+		self.bar = Character("bar", 201, 202, 203, 204)
 		self.wpn1 = Weapon("wpn1", 11, 12)
 		self.bar.weapon = self.wpn1
 
@@ -57,10 +57,10 @@ class TestCharacter(unittest.TestCase):
 
 	def test_init(self):
 		self.assertEqual(self.foo.name, "foo")
-		self.assertEqual(self.foo.max_hp, 11)
-		self.assertEqual(self.foo.attack, 12)
-		self.assertEqual(self.foo.defense, 13)
-		self.assertEqual(self.foo.level, 14)
+		self.assertEqual(self.foo.max_hp, 101)
+		self.assertEqual(self.foo.attack, 102)
+		self.assertEqual(self.foo.defense, 103)
+		self.assertEqual(self.foo.level, 104)
 		self.assertEqual(self.foo.hp, self.foo.max_hp)
 		self.assertEqual(self.foo.weapon.name, "Unarmed")
 
