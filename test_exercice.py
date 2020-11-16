@@ -6,7 +6,7 @@ import sys
 import unittest
 import inspect
 
-from characters import *
+from game import *
 
 
 class TestExercice(unittest.TestCase):

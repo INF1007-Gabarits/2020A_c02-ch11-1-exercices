@@ -22,7 +22,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="characters.py" />
+    <Compile Include="game.py" />
     <Compile Include="exercice.py" />
     <Compile Include="test_exercice.py" />
     <Compile Include="utils.py">
